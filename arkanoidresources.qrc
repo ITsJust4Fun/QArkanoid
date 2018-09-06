@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/">
+        <file>textures/platform.png</file>
+        <file>textures/ball.png</file>
+        <file>textures/block_blue.png</file>
+        <file>textures/block_gray.png</file>
+        <file>textures/block_gray_damaged.png</file>
+        <file>textures/block_green.png</file>
+        <file>textures/block_purple.png</file>
+        <file>textures/block_red.png</file>
+        <file>textures/block_yellow.png</file>
+        <file>textures/block_orange.png</file>
+        <file>sfx/block_damage.wav</file>
+        <file>sfx/block_dest.wav</file>
+        <file>sfx/platform_colis.wav</file>
+        <file>Arkanoid_icon.png</file>
+    </qresource>
+</RCC>
