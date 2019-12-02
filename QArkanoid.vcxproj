@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8B8C8A73-E5FF-3FF7-A13D-F7BA2CBBC636}</ProjectGuid>
+    <RootNamespace>QArkanoid</RootNamespace>
+    <Keyword>QtVS_v301</Keyword>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformMinVersion>10.0.18362.0</WindowsTargetPlatformMinVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <PlatformToolset>v142</PlatformToolset>
+    <OutputDirectory>debug\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>debug\</IntermediateDirectory>
+    <PrimaryOutput>QArkanoid</PrimaryOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <PlatformToolset>v142</PlatformToolset>
+    <OutputDirectory>release\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>release\</IntermediateDirectory>
+    <PrimaryOutput>QArkanoid</PrimaryOutput>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Condition="'$(QtMsBuild)'=='' or !Exists('$(QtMsBuild)\qt.targets')">
+    <QtMsBuild>$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <QtInstall>Qt_5_13_1_msvc2019_64_static</QtInstall>
+    <QtModules>core;network;gui;multimedia;widgets</QtModules>
+  </PropertyGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <QtInstall>Qt_5_13_1_msvc2019_64_static</QtInstall>
+    <QtModules>core;network;gui;multimedia;widgets</QtModules>
+  </PropertyGroup>
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
+    <Import Project="$(QtMsBuild)\qt.props" />
+  </ImportGroup>
+  <PropertyGroup>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">QArkanoid</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</IgnoreImportLibrary>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">QArkanoid</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;..\..\Soft\Qt\5.13.1\msvc2019_64_static\include;..\..\Soft\Qt\5.13.1\msvc2019_64_static\include\QtWidgets;..\..\Soft\Qt\5.13.1\msvc2019_64_static\include\QtMultimedia;..\..\Soft\Qt\5.13.1\msvc2019_64_static\include\QtGui;..\..\Soft\Qt\5.13.1\msvc2019_64_static\include\QtANGLE;..\..\Soft\Qt\5.13.1\msvc2019_64_static\include\QtNetwork;..\..\Soft\Qt\5.13.1\msvc2019_64_static\include\QtCore;debug;C:\VulkanSDK\1.1.108.0\include;..\..\Soft\Qt\5.13.1\msvc2019_64_static\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>debug\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;U_STATIC_IMPLEMENTATION;WIN64;QT_DEPRECATED_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\styles\qwindowsvistastyled.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\mediaservice\dsengined.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\mediaservice\qtmedia_audioengined.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\mediaservice\wmfengined.lib;"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\mf.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\mfplat.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\mfuuid.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\d3d9.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\dxva2.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\evr.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\mfreadwrite.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\wmcodecdspuuid.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\strmiids.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\dmoguids.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\uuid.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\msdmo.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\ole32.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\oleaut32.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\Mf.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\Mfuuid.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\Mfplat.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\Propsys.lib";E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\audio\qtaudio_wasapid.lib;Mmdevapi.lib;runtimeobject.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\audio\qtaudio_windowsd.lib;"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\strmiids.lib";E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\playlistformats\qtmultimedia_m3ud.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\platforms\qwindowsd.lib;"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\winspool.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\imm32.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\oleaut32.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\shlwapi.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\wtsapi32.lib";E:\Soft\Qt\5.13.1\msvc2019_64_static\lib\Qt5EventDispatcherSupportd.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\lib\Qt5FontDatabaseSupportd.lib;"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\gdi32.lib";E:\Soft\Qt\5.13.1\msvc2019_64_static\lib\qtfreetyped.lib;"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\dwrite.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\d2d1.lib";E:\Soft\Qt\5.13.1\msvc2019_64_static\lib\Qt5ThemeSupportd.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\lib\Qt5AccessibilitySupportd.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\lib\Qt5VulkanSupportd.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\lib\Qt5WindowsUIAutomationSupportd.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\imageformats\qgifd.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\imageformats\qicnsd.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\imageformats\qicod.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\imageformats\qjpegd.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\imageformats\qtgad.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\imageformats\qtiffd.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\imageformats\qwbmpd.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\imageformats\qwebpd.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\bearer\qgenericbearerd.lib;"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\uxtheme.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\dwmapi.lib";E:\Soft\Qt\5.13.1\msvc2019_64_static\lib\qtlibpngd.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\lib\qtharfbuzzd.lib;gdi32.lib;comdlg32.lib;oleaut32.lib;imm32.lib;winmm.lib;ole32.lib;uuid.lib;user32.lib;advapi32.lib;"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\dnsapi.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\iphlpapi.lib";ws2_32.lib;"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\mpr.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\netapi32.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\userenv.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\version.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\ws2_32.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\kernel32.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\user32.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\shell32.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\uuid.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\ole32.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\advapi32.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\winmm.lib";E:\Soft\Qt\5.13.1\msvc2019_64_static\lib\qtpcre2d.lib;"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\shell32.lib";%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <OutputFile>$(OutDir)\QArkanoid.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;U_STATIC_IMPLEMENTATION;WIN64;QT_DEPRECATED_WARNINGS;QT_WIDGETS_LIB;QT_MULTIMEDIA_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_CORE_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <QtMoc>
+      <CompilerFlavor>msvc</CompilerFlavor>
+      <Include>./$(Configuration)/moc_predefs.h</Include>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <DynamicSource>output</DynamicSource>
+      <QtMocDir>$(Configuration)</QtMocDir>
+      <QtMocFileName>moc_%(Filename).cpp</QtMocFileName>
+    </QtMoc>
+    <QtRcc>
+      <InitFuncName>arkanoidresources</InitFuncName>
+      <Compression>default</Compression>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+      <QtRccDir>$(Configuration)</QtRccDir>
+      <QtRccFileName>qrc_%(Filename).cpp</QtRccFileName>
+    </QtRcc>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;..\..\Soft\Qt\5.13.1\msvc2019_64_static\include;..\..\Soft\Qt\5.13.1\msvc2019_64_static\include\QtWidgets;..\..\Soft\Qt\5.13.1\msvc2019_64_static\include\QtMultimedia;..\..\Soft\Qt\5.13.1\msvc2019_64_static\include\QtGui;..\..\Soft\Qt\5.13.1\msvc2019_64_static\include\QtANGLE;..\..\Soft\Qt\5.13.1\msvc2019_64_static\include\QtNetwork;..\..\Soft\Qt\5.13.1\msvc2019_64_static\include\QtCore;release;C:\VulkanSDK\1.1.108.0\include;..\..\Soft\Qt\5.13.1\msvc2019_64_static\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>release\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;U_STATIC_IMPLEMENTATION;WIN64;QT_DEPRECATED_WARNINGS;QT_NO_DEBUG;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\styles\qwindowsvistastyle.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\mediaservice\dsengine.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\mediaservice\qtmedia_audioengine.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\mediaservice\wmfengine.lib;"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\mf.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\mfplat.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\mfuuid.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\d3d9.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\dxva2.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\evr.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\mfreadwrite.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\wmcodecdspuuid.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\strmiids.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\dmoguids.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\uuid.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\msdmo.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\ole32.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\oleaut32.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\Mf.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\Mfuuid.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\Mfplat.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\Propsys.lib";E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\audio\qtaudio_wasapi.lib;Mmdevapi.lib;runtimeobject.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\audio\qtaudio_windows.lib;"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\strmiids.lib";E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\playlistformats\qtmultimedia_m3u.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\platforms\qwindows.lib;"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\winspool.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\imm32.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\oleaut32.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\shlwapi.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\wtsapi32.lib";E:\Soft\Qt\5.13.1\msvc2019_64_static\lib\Qt5EventDispatcherSupport.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\lib\Qt5FontDatabaseSupport.lib;"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\gdi32.lib";E:\Soft\Qt\5.13.1\msvc2019_64_static\lib\qtfreetype.lib;"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\dwrite.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\d2d1.lib";E:\Soft\Qt\5.13.1\msvc2019_64_static\lib\Qt5ThemeSupport.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\lib\Qt5AccessibilitySupport.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\lib\Qt5VulkanSupport.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\lib\Qt5WindowsUIAutomationSupport.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\imageformats\qgif.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\imageformats\qicns.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\imageformats\qico.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\imageformats\qjpeg.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\imageformats\qtga.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\imageformats\qtiff.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\imageformats\qwbmp.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\imageformats\qwebp.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\plugins\bearer\qgenericbearer.lib;"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\uxtheme.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\dwmapi.lib";E:\Soft\Qt\5.13.1\msvc2019_64_static\lib\qtlibpng.lib;E:\Soft\Qt\5.13.1\msvc2019_64_static\lib\qtharfbuzz.lib;gdi32.lib;comdlg32.lib;oleaut32.lib;imm32.lib;winmm.lib;ole32.lib;uuid.lib;user32.lib;advapi32.lib;"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\dnsapi.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\iphlpapi.lib";ws2_32.lib;"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\mpr.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\netapi32.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\userenv.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\version.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\ws2_32.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\kernel32.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\user32.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\shell32.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\uuid.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\ole32.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\advapi32.lib";"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\winmm.lib";E:\Soft\Qt\5.13.1\msvc2019_64_static\lib\qtpcre2.lib;"C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x64\shell32.lib";%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkIncremental>false</LinkIncremental>
+      <OutputFile>$(OutDir)\QArkanoid.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;U_STATIC_IMPLEMENTATION;WIN64;QT_DEPRECATED_WARNINGS;QT_NO_DEBUG;QT_WIDGETS_LIB;QT_MULTIMEDIA_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <QtMoc>
+      <CompilerFlavor>msvc</CompilerFlavor>
+      <Include>./$(Configuration)/moc_predefs.h</Include>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <DynamicSource>output</DynamicSource>
+      <QtMocDir>$(Configuration)</QtMocDir>
+      <QtMocFileName>moc_%(Filename).cpp</QtMocFileName>
+    </QtMoc>
+    <QtRcc>
+      <InitFuncName>arkanoidresources</InitFuncName>
+      <Compression>default</Compression>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+      <QtRccDir>$(Configuration)</QtRccDir>
+      <QtRccFileName>qrc_%(Filename).cpp</QtRccFileName>
+    </QtRcc>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="arkanoid.cpp" />
+    <ClCompile Include="ball.cpp" />
+    <ClCompile Include="block.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="platform.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="arkanoid.h">
+    </QtMoc>
+    <QtMoc Include="ball.h">
+    </QtMoc>
+    <QtMoc Include="block.h">
+    </QtMoc>
+    <QtMoc Include="platform.h">
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="debug\moc_predefs.h.cbt">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\Soft\Qt\5.13.1\msvc2019_64_static\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -Zi -MDd -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E ..\..\Soft\Qt\5.13.1\msvc2019_64_static\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;debug\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_predefs.h;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="release\moc_predefs.h.cbt">
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\Soft\Qt\5.13.1\msvc2019_64_static\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -O2 -MD -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E ..\..\Soft\Qt\5.13.1\msvc2019_64_static\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;release\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_predefs.h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClCompile Include=".\qarkanoid_plugin_import.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Arkanoid_icon.png" />
+    <QtRcc Include="arkanoidresources.qrc">
+    </QtRcc>
+    <None Include="textures\ball.png" />
+    <None Include="textures\block_blue.png" />
+    <None Include="sfx\block_damage.wav" />
+    <None Include="sfx\block_dest.wav" />
+    <None Include="textures\block_gray.png" />
+    <None Include="textures\block_gray_damaged.png" />
+    <None Include="textures\block_green.png" />
+    <None Include="textures\block_orange.png" />
+    <None Include="textures\block_purple.png" />
+    <None Include="textures\block_red.png" />
+    <None Include="textures\block_yellow.png" />
+    <None Include="textures\platform.png" />
+    <None Include="sfx\platform_colis.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

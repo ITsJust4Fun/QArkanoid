@@ -9,12 +9,18 @@ Ball::Ball(int fieldWidth, int fieldHeight, QObject *parent) : QObject(parent) {
     angular = M_PI_4;
     speed = 4;
     kol = 0;
-    platformSound = new QSoundEffect;
+	timer = new QElapsedTimer();
+	timer->start();
+    platformSound = new QSoundEffect(this);
     platformSound->setSource(QUrl::fromLocalFile(":/sfx/platform_colis.wav"));
-    blockDestroySound = new QSoundEffect;
+    blockDestroySound = new QSoundEffect(this);
     blockDestroySound->setSource(QUrl::fromLocalFile(":/sfx/block_dest.wav"));
-    blockDamagedSound = new QSoundEffect;
+    blockDamagedSound = new QSoundEffect(this);
     blockDamagedSound->setSource(QUrl::fromLocalFile(":/sfx/block_damage.wav"));
+}
+
+Ball::~Ball() {
+	delete timer;
 }
 
 QRectF Ball::boundingRect() const{
@@ -52,6 +58,13 @@ void Ball::move(){
 }
 
 bool Ball::changeAngular(){
+
+	if (timer->elapsed() < collisionTime) {
+		return false;
+	}
+
+	timer->restart();
+
     if (curPosX + rad + speed * cos(angular) >= fieldWidth){
         changeAng = M_PI_2;
         return true;
@@ -170,11 +183,3 @@ void Ball::hitBlock(Block* block){
         blockDestroySound->play();
     }
 }
-
-Ball::~Ball(){
-    delete platformSound;
-    delete blockDestroySound;
-    delete blockDamagedSound;
-}
-
-

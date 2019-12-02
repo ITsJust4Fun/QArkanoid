@@ -1,7 +1,7 @@
 #include "arkanoid.h"
 
 
-Arkanoid::Arkanoid(QWidget *parent) : QWidget(parent) {
+Arkanoid::Arkanoid(QWidget* parent) : QWidget(parent) {
     screens = QGuiApplication::screens();
     screenHeight = screens[0]->size().height();
     screenWidth = screens[0]->size().width();
@@ -25,8 +25,8 @@ Arkanoid::Arkanoid(QWidget *parent) : QWidget(parent) {
     view = new QGraphicsView(scene, this);
     view->resize(widgetWidth, widgetHeight);
     view->setAlignment(Qt::AlignLeft | Qt::AlignTop);
-    platform = new Platform(sceneWidth, sceneHeight);
-    ball = new Ball(sceneWidth, sceneHeight);
+    platform = new Platform(sceneWidth, sceneHeight, this);
+    ball = new Ball(sceneWidth, sceneHeight, this);
     scene->addItem(ball);
     scene->addItem(platform);
     platform->setFlag( QGraphicsItem::ItemIsFocusable, true );
@@ -34,55 +34,26 @@ Arkanoid::Arkanoid(QWidget *parent) : QWidget(parent) {
     setCursor(Qt::BlankCursor);
     platform->setFocus();
     view->setBackgroundBrush(Qt::black);
-    timer = new QTimer;
+    timer = new QTimer(this);
     timer->setTimerType(Qt::PreciseTimer);
-    blocks = new QList<Block*>;
-    for(int i = 0; i < 8; i++){
-        for (int j = 0; j < 8; j++){
-            Block* block;
-            if (i == 0){
-                block = new Block(2, "gray", widgetWidth, widgetHeight);
-            } else if (i == 1){
-                block = new Block(1, "blue", widgetWidth, widgetHeight);
-            } else if (i == 2){
-                block = new Block(1, "green", widgetWidth, widgetHeight);
-            } else if (i == 3){
-                block = new Block(1, "orange", widgetWidth, widgetHeight);
-            } else if (i == 4){
-                block = new Block(1, "purple", widgetWidth, widgetHeight);
-            } else if (i == 5){
-                block = new Block(1, "red", widgetWidth, widgetHeight);
-            } else if (i == 6){
-                block = new Block(1, "yellow", widgetWidth, widgetHeight);
-            } else {
-                block = new Block(2, "gray", widgetWidth, widgetHeight);
-            }
-            block->setPos(block->width * j - static_cast<int>(6 * widgetWidth / 400.0), 50 + block->height * i);
-            blocks->append(block);
-            scene->addItem(block);
-        }
-    };
+	gameTimer = new QElapsedTimer();
+	gameTimer->start();
+	blocksNumber = 0;
+	attempts = 0;
+	addBlocks();
     grabMouse();
     setMouseTracking(true);
 
-    QObject::connect(platform, SIGNAL(changeBallPos(int)),
-                     ball, SLOT(startMovement(int)));
-    QObject::connect(platform, SIGNAL(startMove()),
-                     this, SLOT(connectTnB()));
-    QObject::connect(ball, SIGNAL(removeBlockSig(Block*)),
-                     this, SLOT(removeBlock(Block*)));
-    QObject::connect(ball, SIGNAL(removeBall(Ball*)),
-                     this, SLOT(removeBall(Ball*)));
-    QObject::connect(timer, SIGNAL(timeout()),
-                     ball, SLOT(move()));
+    connect(platform, &Platform::changeBallPos, ball, &Ball::startMovement);
+    connect(platform, &Platform::startMove, this, &Arkanoid::connectTnB);
+    connect(ball, &Ball::removeBlockSig, this, &Arkanoid::removeBlock);
+    connect(ball, &Ball::removeBall, this, &Arkanoid::removeBall);
+    connect(timer, &QTimer::timeout, ball, &Ball::move);
 
 }
 
 Arkanoid::~Arkanoid() {
-    delete scene;
-    delete view;
-    delete timer;
-    delete blocks;
+	delete gameTimer;
 }
 
 void Arkanoid::connectTnB(){
@@ -91,6 +62,37 @@ void Arkanoid::connectTnB(){
 
 void Arkanoid::removeBlock(Block* block){
     scene->removeItem(block);
+	blocksNumber--;
+
+	if (!blocksNumber) {
+		removeBall(ball);
+		releaseMouse();
+
+		QTime time(0, 0, 0);
+		time = time.addMSecs(gameTimer->elapsed());
+
+		QString message = "Attempts: " + QString::number(attempts) + "\n"
+						  + "Time: " + time.toString("hh:mm:ss") + "\n";
+
+		QMessageBox msgBox;
+		msgBox.setText("You win!");
+		msgBox.setInformativeText(message + "Retry?");
+		msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+		msgBox.setDefaultButton(QMessageBox::Yes);
+		int answer = msgBox.exec();
+		
+		switch (answer) {
+			case QMessageBox::Yes:
+				attempts = 1;
+				gameTimer->restart();
+				grabMouse();
+				addBlocks();
+				break;
+			default:
+				close();
+				break;
+		}
+	}
 }
 
 void Arkanoid::mouseMoveEvent(QMouseEvent* event){
@@ -112,4 +114,40 @@ void Arkanoid::removeBall(Ball* ball) {
     ball->setPos(ball->curPosX, ball->curPosY);
     ball->update();
     platform->startFlag = true;
+	attempts++;
+}
+
+void Arkanoid::addBlocks() {
+	for (int i = 0; i < 8; i++) {
+		for (int j = 0; j < 8; j++) {
+			Block* block;
+			if (i == 0) {
+				block = new Block(2, "gray", widgetWidth, widgetHeight, this);
+			}
+			else if (i == 1) {
+				block = new Block(1, "blue", widgetWidth, widgetHeight, this);
+			}
+			else if (i == 2) {
+				block = new Block(1, "green", widgetWidth, widgetHeight, this);
+			}
+			else if (i == 3) {
+				block = new Block(1, "orange", widgetWidth, widgetHeight, this);
+			}
+			else if (i == 4) {
+				block = new Block(1, "purple", widgetWidth, widgetHeight, this);
+			}
+			else if (i == 5) {
+				block = new Block(1, "red", widgetWidth, widgetHeight, this);
+			}
+			else if (i == 6) {
+				block = new Block(1, "yellow", widgetWidth, widgetHeight, this);
+			}
+			else {
+				block = new Block(2, "gray", widgetWidth, widgetHeight, this);
+			}
+			block->setPos(block->width * j - static_cast<int>(6 * widgetWidth / 400.0), 50 + block->height * i);
+			scene->addItem(block);
+			blocksNumber++;
+		}
+	}
 }

@@ -8,11 +8,16 @@
 #include "block.h"
 
 #include <QSoundEffect>
+#include <QElapsedTimer>
 
 class Ball : public QObject, public QGraphicsItem {
     Q_OBJECT
 
 private:
+	const double M_PI = 3.14;
+	const double M_PI_2 = M_PI / 2;
+	const double M_PI_4 = M_PI / 4;
+	const int collisionTime = 10;
     int fieldWidth;
     int fieldHeight;
     double changeAng;
@@ -21,6 +26,7 @@ private:
     int rad;
     int speed;
     int kol;
+	QElapsedTimer* timer;
     QSoundEffect* platformSound;
     QSoundEffect* blockDestroySound;
     QSoundEffect* blockDamagedSound;

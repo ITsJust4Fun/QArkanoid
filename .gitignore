@@ -1,2 +1,8 @@
 sfx/
+debug/
+release/
+x64/
+QArkanoid/.vs
 QArkanoid.pro.*
+.qmake.stash
+qarkanoid_plugin_import.cpp
