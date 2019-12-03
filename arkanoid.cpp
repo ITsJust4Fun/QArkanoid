@@ -39,7 +39,7 @@ Arkanoid::Arkanoid(QWidget* parent) : QWidget(parent) {
 	gameTimer = new QElapsedTimer();
 	gameTimer->start();
 	blocksNumber = 0;
-	attempts = 0;
+    attempts = 1;
 	addBlocks();
     grabMouse();
     setMouseTracking(true);
@@ -66,6 +66,7 @@ void Arkanoid::removeBlock(Block* block){
 
 	if (!blocksNumber) {
 		removeBall(ball);
+        attempts--;
 		releaseMouse();
 
 		QTime time(0, 0, 0);
